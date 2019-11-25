@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HM</string>
+    <string name="create_hm">Create HM</string>
+    <string name="get_hm">Get HM</string>
+    <string name="create_additional">Create Additional</string>
+    <string name="get_additional">Get Additional</string>
+    <string name="report">Report</string>
+</resources>
