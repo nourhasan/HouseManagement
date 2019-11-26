@@ -1,10 +1,8 @@
 package dev.nour.hm;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class CreateHmActivity extends AppCompatActivity {
+public class CreateHmActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
