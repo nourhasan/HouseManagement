@@ -11,25 +11,18 @@ import java.util.List;
 import dev.nour.hm.DAO.ExpenseDao;
 import dev.nour.hm.DAO.MyRoomDatabase;
 import dev.nour.hm.Entities.Expense;
+import dev.nour.hm.Repos.ExpenseRepo;
 
 public class CreateHmActivity extends BaseActivity implements View.OnClickListener {
     private Button clickMe;
-    private MyRoomDatabase roomDb;
-    private ExpenseDao expenseDao;
-    private Expense expense;
+    private ExpenseRepo expenseRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_hm);
 
-        expense = new Expense();
-        expense.expense = 100;
-        expense.date = new Date().getTime();
-        expense.description = "HM";
-
-        roomDb = MyRoomDatabase.getDatabase(this);
-        expenseDao = roomDb.expenseDao();
+        expenseRepo = new ExpenseRepo(this);
 
         clickMe = findViewById(R.id.clickMe);
         clickMe.setOnClickListener(this);
@@ -40,7 +33,12 @@ public class CreateHmActivity extends BaseActivity implements View.OnClickListen
         if(v.getId() == R.id.clickMe){
             Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
 
-            expenseDao.insert(expense);
+            Expense expense = new Expense();
+            expense.expense = 100;
+            expense.date = new Date().getTime();
+            expense.description = "dfyhgfh";
+
+            expenseRepo.insert(expense);
             //List<Expense> expenses = expenseDao.getAll();
         }
     }
