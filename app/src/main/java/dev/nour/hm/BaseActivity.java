@@ -2,6 +2,7 @@ package dev.nour.hm;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,11 +10,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class BaseActivity extends AppCompatActivity {
+import dev.nour.hm.DAO.MyRoomDatabase;
+import dev.nour.hm.Entities.Expense;
 
+public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //database connection
+        //MyRoomDatabase db = Room.databaseBuilder(getApplicationContext(), MyRoomDatabase.class, "hm_database").build();
     }
 
     @Override

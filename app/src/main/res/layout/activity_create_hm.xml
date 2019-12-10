@@ -4,11 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateHmActivity">
+    tools:context=".CreateHmActivity"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <TextView
+    <Button
+        android:id="@+id/clickMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create HM">
-    </TextView>
+        android:text="Click Me">
+    </Button>
 </LinearLayout>
