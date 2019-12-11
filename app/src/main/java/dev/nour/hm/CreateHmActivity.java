@@ -33,13 +33,15 @@ public class CreateHmActivity extends BaseActivity implements View.OnClickListen
         if(v.getId() == R.id.clickMe){
             Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
 
-            Expense expense = new Expense();
-            expense.expense = 100;
-            expense.date = new Date().getTime();
-            expense.description = "dfyhgfh";
+            Expense expense = new Expense(
+                    1,
+                    "My Description",
+                    100,
+                    new Date().getTime(),
+                    false
+            );
 
             expenseRepo.insert(expense);
-            //List<Expense> expenses = expenseDao.getAll();
         }
     }
 }

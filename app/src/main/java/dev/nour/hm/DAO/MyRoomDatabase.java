@@ -5,13 +5,11 @@ import android.content.Context;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import dev.nour.hm.Entities.AdditionalExpense;
 import dev.nour.hm.Entities.Expense;
 
-@androidx.room.Database(entities = {Expense.class, AdditionalExpense.class}, version = 1, exportSchema = false)
+@androidx.room.Database(entities = {Expense.class}, version = 1, exportSchema = false)
 public abstract class MyRoomDatabase extends RoomDatabase {
     public abstract ExpenseDao expenseDao();
-    public abstract AdditionalExpenseDao additionalExpenseDao();
 
     public static volatile MyRoomDatabase myRoomDatabase;
 
@@ -20,7 +18,7 @@ public abstract class MyRoomDatabase extends RoomDatabase {
             synchronized (MyRoomDatabase.class){
                 if(myRoomDatabase == null){
                     myRoomDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            MyRoomDatabase.class, "hm_database").build();
+                            MyRoomDatabase.class, "hm_database.db").build();
                 }
             }
         }

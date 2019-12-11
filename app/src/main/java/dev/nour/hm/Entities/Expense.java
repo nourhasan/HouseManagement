@@ -1,97 +1,146 @@
 package dev.nour.hm.Entities;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
 @Entity(tableName = "expenses")
 public class Expense {
-    @NonNull
     @PrimaryKey(autoGenerate = true)
-    public int id;
-
-    public int reference;
-    public String description;
+    private int id;
 
     @NonNull
-    public int expense;
-    public Long date;
+    private String description;
 
     @NonNull
-    public Boolean is_deleted;
+    private int expense;
 
     @NonNull
-    public Long created_at;
-    public Long modified_at;
+    private long date;
+
+    @NonNull @ColumnInfo(name = "is_additional")
+    private boolean isAdditional;
+
+    @NonNull @ColumnInfo(name = "user_id")
+    private int userId;
+
+    @NonNull @ColumnInfo(name = "is_deleted")
+    private boolean isDeleted;
+
+    @NonNull @ColumnInfo(name = "created_at")
+    private long createdAt;
+
+    @ColumnInfo(name = "modified_at")
+    private long modifiedAt;
+
+    /*----------------------------------------------------------------*/
 
     public Expense(){
-        this.is_deleted = false;
-        this.created_at = new Date().getTime();
+        this.isAdditional = false;
+        this.isDeleted = false;
+        this.createdAt = new Date().getTime();
     }
 
-    public int getId() {
-        return id;
+    @Ignore
+    public Expense(int userId){
+        this.isAdditional = false;
+        this.isDeleted = false;
+        this.createdAt = new Date().getTime();
+
+        this.userId = userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Ignore
+    public Expense(boolean isAdditional){
+        this.isAdditional = isAdditional;
+        this.isDeleted = false;
+        this.createdAt = new Date().getTime();
     }
 
-    public int getReference() {
-        return reference;
+    @Ignore
+    public Expense(int userId, boolean isAdditional){
+        this.isDeleted = false;
+        this.createdAt = new Date().getTime();
+
+        this.userId = userId;
+        this.isAdditional = isAdditional;
     }
 
-    public void setReference(int reference) {
-        this.reference = reference;
-    }
+    @Ignore
+    public Expense(String description, int expense, long date){
+        this.isAdditional = false;
+        this.isDeleted = false;
+        this.createdAt = new Date().getTime();
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getExpense() {
-        return expense;
-    }
-
-    public void setExpense(int expense) {
         this.expense = expense;
-    }
-
-    public Long getDate() {
-        return date;
-    }
-
-    public void setDate(Long date) {
         this.date = date;
     }
 
-    public Boolean getIs_deleted() {
-        return is_deleted;
+    @Ignore
+    public Expense(int userId, String description, int expense, long date){
+        this.isAdditional = false;
+        this.isDeleted = false;
+        this.createdAt = new Date().getTime();
+
+        this.userId = userId;
+        this.description = description;
+        this.expense = expense;
+        this.date = date;
     }
 
-    public void setIs_deleted(Boolean is_deleted) {
-        this.is_deleted = is_deleted;
+    @Ignore
+    public Expense(int userId, String description, int expense, long date, boolean isAdditional){
+        this.isDeleted = false;
+        this.createdAt = new Date().getTime();
+
+        this.userId = userId;
+        this.description = description;
+        this.expense = expense;
+        this.date = date;
+        this.isAdditional = false;
     }
 
-    public Long getCreated_at() {
-        return created_at;
-    }
+    /*----------------------------------------------------------------*/
 
-    public void setCreated_at(Long created_at) {
-        this.created_at = created_at;
-    }
+    public int getId() { return id; }
 
-    public Long getModified_at() {
-        return modified_at;
-    }
+    public void setId(int id) { this.id = id; }
 
-    public void setModified_at(Long modified_at) {
-        this.modified_at = modified_at;
-    }
+    @NonNull
+    public String getDescription() { return description; }
+
+    public void setDescription(@NonNull String description) { this.description = description; }
+
+    public int getExpense() { return expense; }
+
+    public void setExpense(int expense) { this.expense = expense; }
+
+    public long getDate() { return date; }
+
+    public void setDate(long date) { this.date = date; }
+
+    public boolean getIsAdditional() { return isAdditional; }
+
+    public void setIsAdditional(boolean isAdditional) { this.isAdditional = isAdditional; }
+
+    public int getUserId() { return userId; }
+
+    public void setUserId(int userId) { this.userId = userId; }
+
+    public boolean getIsDeleted() { return isDeleted; }
+
+    public void setDeleted(boolean isDeleted) { this.isDeleted = isDeleted; }
+
+    public long getCreatedAt() { return createdAt; }
+
+    public void setCreatedAt(long createdAt) { this.createdAt = createdAt; }
+
+    public long getModifiedAt() { return modifiedAt; }
+
+    public void setModifiedAt(long modifiedAt) { this.modifiedAt = modifiedAt; }
 }
